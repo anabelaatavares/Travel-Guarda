@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{categories.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="categories" class="selection">
+    <h2 [innerHTML]="categories.description"></h2>
+  </div>
+  <!--<ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>-->
+
+  <ion-card *ngFor="let post of posts" (click)="itemSelected(post)">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{post.better_featured_image?.source_url}}" />
+      </ion-avatar>
+      <p style="font-weight: bold;">{{post.title.rendered}}</p>
+      <p style="white-space: normal"><b> Contato:</b> {{post.acf.contatos}}</p>
+    </ion-item>
+  </ion-card>
+
+</ion-content>

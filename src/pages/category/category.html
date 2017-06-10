@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar  >
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Guarda</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<!--<ion-grid>
+        <ion-row>
+            <ion-col width-50 *ngFor="let category of categories">
+                <ion-list>
+                    <ion-item (click)="itemSelected(category)">
+                        <img style="width: 150px; height: 100px" class="img" src="{{category.img}}" />
+                        <div style="text-align: center">
+                            {{category.name }}
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>-->
+
+<ion-content class="cards-bg social-cards">
+
+        <ion-item *ngFor="let category of categories" (click)="itemSelected(category)">
+            <ion-avatar item-start>
+                <img  src="{{category.img}}"/>
+            </ion-avatar>
+            <h2> {{category.name }}</h2>
+        </ion-item>
+
+    <!--<img src="../src/assets/images/5620872.jpg">-->
+    <!--<div class="row unlimited-items">
+        <div class="col" *ngFor="let category of categories" (click)="itemSelected(category)">
+            <ion-card>
+                <img class="img" src="{{category.img}}" />
+                <ion-card-content>
+                    <ion-card-title>
+                        {{category.name }}
+                    </ion-card-title>
+                    <p>
+                        {{category.description}}
+                    </p>
+                </ion-card-content>
+            </ion-card>
+
+        </div>
+    </div>-->
+</ion-content>

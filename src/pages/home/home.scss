@@ -1,0 +1,97 @@
+page-home {
+  .row.unlimited-items {
+    flex-wrap: wrap;
+  }
+
+  .row.unlimited-items .col {
+    flex: none;
+    width: 50%;
+  }
+
+  img {
+    /*  To contain the image to the confines of the div  */
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-image {
+    width: 100%;
+    margin: auto;
+  }
+
+  .hero-image::after {
+    display: block;
+    position: relative;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+    margin-top: -150px;
+    height: 150px;
+    width: 100%;
+    content: '';
+  }
+
+  .card-title {
+    color: black;
+    text-shadow: -1.2px 0 black, 0 1.2px black, 1.2px 0 black, 0 -1.2px black;
+    position: absolute;
+    top: 20%;
+    font-size: 3.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+  }
+
+  #carousel {
+    margin: 10px;
+    width: 100%;
+    height: auto;
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  .slide {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  #carousel::-webkit-scrollbar {
+    border: none;
+    width: 0;
+    background: rgba(0,0,0,0);
+  }
+
+  #carousel::-webkit-scrollbar-track {
+    border: none;
+    width: 0;
+    background: rgba(0,0,0,0);
+  }
+
+  #carousel::-webkit-scrollbar-thumb {
+    border: none;
+    width: 0;
+    background: rgba(0,0,0,0);
+  }
+
+  .card-background-page {
+    ion-card {
+      margin: 3px;
+      width: 150px;
+      height: 150px;
+      position: relative;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .card-title {
+      position: absolute;
+      top: 36%;
+      font-size: 1.5em;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
+    }
+
+  }
+
+}

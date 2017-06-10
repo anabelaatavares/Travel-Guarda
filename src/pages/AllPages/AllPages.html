@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ver tudo</ion-title>
+  </ion-navbar>
+</ion-header>
+<!--<ion-content class="cards-bg">
+  <ion-card *ngFor="let post of posts" (click)="itemSelected(post)">
+    <img class="img" src="{{post.better_featured_image?.source_url}}" />
+    <ion-card-content>
+      <ion-card-title>
+        {{post.title.rendered}}
+      </ion-card-title>
+      <p>
+        <b>Morada:</b> {{post.acf.morada}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>-->
+<ion-content>
+  <div class="row unlimited-items">
+    <div class="col" *ngFor="let post of posts" (click)="itemSelected(post)">
+      <img src="{{post.better_featured_image.media_details.sizes.thumbnail?.source_url}}" />
+      <p>{{post.title.rendered}}</p>
+      <p><b>Horário</b> {{post.acf.horario}}</p>
+      <p><b>Contato</b> {{post.acf.contatos}}</p>
+    </div>
+  </div>
+</ion-content>

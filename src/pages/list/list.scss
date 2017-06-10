@@ -1,0 +1,21 @@
+page-list {
+  .btn {
+    //width: 150px;
+    margin: 15px;
+    background-color: #4CAF50;
+    border-radius: 8px;
+    /* Remove borders */
+    color: white;
+    /* Add a text color */
+    padding: 14px 28px;
+    /* Add some padding */
+    cursor: pointer;
+    /* Add a pointer cursor on mouse-over */
+  }
+
+  #table {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+}

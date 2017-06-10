@@ -1,0 +1,17 @@
+.text{
+   font-weight: bold;
+}
+
+.row.unlimited-items {
+  flex-wrap: wrap;
+}
+
+.row.unlimited-items .col{
+  flex: none;
+  width: 50%;
+}
+
+.img{
+    height: 100%;
+}
+

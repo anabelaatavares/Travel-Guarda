@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button block (click)="goToSecond()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Ver tudo</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="hero-image"><img src="http://guardatravel.96.lt/wp-content/uploads/2017/05/Catedral.jpg" /></div>
+  <div class="card-title">Guarda</div>
+  <!--<div class="row unlimited-items">
+    <div class="col" *ngFor="let post of posts">
+      <ion-card class="cards-bg" (click)="itemSelected(post)">
+        <img class="img" src="{{post.better_featured_image?.source_url}}" />
+        <ion-card-content>
+          <p>
+            <b>{{post.title.rendered}}</b>
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>-->
+  <p style="margin: 10px;"><b>O que deve visitar</b></p>
+  <div id="carousel">
+    <div class="slide" *ngFor="let post of posts" (click)="itemSelected(post)">
+      <img src="{{post.better_featured_image.media_details.sizes.thumbnail?.source_url}}" />
+      <div style="width: 140px; white-space: normal; text-align: center;">{{post.title.rendered}}</div>
+    </div>
+  </div>
+  <br>
+  <p style="margin: 10px;"><b>Outros Locais por categoria</b></p>
+  <div id="carousel">
+    <div class="slide" z>
+      <div class="card-background-page">
+        <ion-card *ngFor="let category of categ" (click)="itemSelecteded(category)">
+          <img src="{{category.img}}" />
+          <div class="card-title"> {{category.name }}</div>
+        </ion-card>
+        <ion-card (click)="itemPage()">
+          <img src="http://www.ipg.pt/website/imgs/gallery/ipg01.jpg" />
+          <div class="card-title">Ver Mais</div>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+  <br>
+</ion-content>

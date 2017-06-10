@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{post.title.rendered}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="post" class="selection">
+    <p style="text-align: justify;" [innerHTML]="post.content.rendered"></p>
+    <br>
+    <hr>
+    <h6>Informações essenciais</h6>
+    <p>Morada: {{post.acf.morada}}</p>
+    <p> Horário: {{post.acf.horario}}</p>
+    <p> Contato: {{post.acf.contatos}}</p>
+    <br>
+    <table>
+      <tr>
+        <td class="table"> <button class="btn" (click)="itemSelected(post)">Ver Localização no Mapa</button></td>
+        <td class="table"> <button class="btn" (click)="save(post)">Adicionar à Lista para Visitar</button></td>
+      </tr>
+    </table>
+  </div>
+  <!--[navPush]="aboutPage"-->
+</ion-content>
