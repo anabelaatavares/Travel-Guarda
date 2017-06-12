@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic
 import { HttpModule } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { IonicStorageModule } from '@ionic/storage';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -22,7 +23,10 @@ import { mapDirectionPostPage } from "../pages/mapDirectionPost/mapDirectionPost
 import { TabsPageGuarda } from "../pages/tabsGuarda/tabsGuarda";
 import { GuardaPage } from "../pages/GuardaPage/GuardaPage";
 import { InformacoesPage } from "../pages/InformacoesPage/InformacoesPage";
-import { searchPage } from "../pages/searchPage/search-page";
+import { SearchPage } from "../pages/searchPage/search-page";
+import { Network } from "@ionic-native/network";
+import { mapDirectionRecomendadoPage } from "../pages/mapDirectionRecomendado/mapDirectionRecomendado";
+
 
 
 
@@ -36,19 +40,19 @@ import { searchPage } from "../pages/searchPage/search-page";
     MapPage,
     mapLocationPostPage,
     mapDirectionPostPage,
+    mapDirectionRecomendadoPage,
     CategoriesPage,
     categoryPostPage,
     GuardaPage,
     InformacoesPage,
     TabsPage,
-    TabsPageGuarda, 
-    searchPage
+    TabsPageGuarda,
+    SearchPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    IonicPageModule.forChild(searchPage),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -61,21 +65,22 @@ import { searchPage } from "../pages/searchPage/search-page";
     MapPage,
     mapLocationPostPage,
     mapDirectionPostPage,
+    mapDirectionRecomendadoPage,
     CategoriesPage,
     categoryPostPage,
     GuardaPage,
     InformacoesPage,
     TabsPage,
     TabsPageGuarda,
-    searchPage
+    SearchPage
   ],
   providers: [
     Storage,
     StatusBar,
     SplashScreen,
     Geolocation,
+    Network,
     SinglepostPage,
-    searchPage,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

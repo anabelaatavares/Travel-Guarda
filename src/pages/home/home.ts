@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform, Alert, ToastController } from 'ionic-angular';
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { SinglepostPage } from '../../pages/singlepost/singlepost';
 import { CategoriesPage } from "../category/category";
 import { categoryPostPage } from "../categoryPost/categoryPost";
+import { SearchPage } from "../searchPage/search-page";
+
+declare var navigator: any;
+declare var Connection: any;
 
 @Component({
   selector: 'page-home',
@@ -18,13 +22,39 @@ export class HomePage {
 
   tab1Root = CategoriesPage;
 
-  constructor(public navCtrl: NavController, public http: Http) {
+  constructor(public navCtrl: NavController, public http: Http, private platform: Platform, private toastCtrl: ToastController) {
     this.loadPost();
     this.loadCats();
+
+    this.platform.ready().then(() => {
+      var networkState = navigator.connection.type;
+      var states = {};
+      states[Connection.WIFI] = 'Conexão WiFi';
+      states[Connection.CELL_3G] = 'Conexão 3G';
+      states[Connection.CELL_4G] = 'Conexão 4G';
+      states[Connection.NONE] = 'Não tem ligação à internet';
+
+
+      if (states[Connection.NONE]) {
+        let toast = this.toastCtrl.create({
+          message: states[networkState] + ' efetuada',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+      } else {
+        let toast = this.toastCtrl.create({
+          message: 'Não há ligação à internet',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+      }
+    });
   }
 
   goToSecond() {
-    this.navCtrl.push('searchPage');
+    this.navCtrl.push(SearchPage);
   }
 
   itemSelected(post) {

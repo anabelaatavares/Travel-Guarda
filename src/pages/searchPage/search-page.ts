@@ -1,79 +1,46 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ModalController } from "ionic-angular";
+import { NavController, ModalController } from "ionic-angular";
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { SinglepostPage } from "../singlepost/singlepost";
 
-
-@IonicPage()
 @Component({
   templateUrl: 'search-page.html'
 })
-export class searchPage {
+export class SearchPage {
   items: string[];
+  posts: any;
+  post: Array<any>;
   value = '';
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
-    this.initializeItems();
+  constructor(public navCtrl: NavController, public http: Http) {
+    this.loadPost();
+
   }
 
-  showDetail(item: any) {
-    this.navCtrl.push('DetailPage', {city: item});
+  loadPost() {
+    this.http.get('http://guardatravel.96.lt/wp-json/wp/v2/posts?per_page=100')
+      .map(res => res.json()).subscribe(post => {
+        this.post = post;
+        console.log(this.post);
+      }, (error) => {
+        console.log('error', error);
+      });
   }
 
-  initializeItems() {
-    this.items = [
-      'Amsterdam',
-      'Bogota',
-      'Buenos Aires',
-      'Cairo',
-      'Dhaka',
-      'Edinburgh',
-      'Geneva',
-      'Genoa',
-      'Glasglow',
-      'Hanoi',
-      'Hong Kong',
-      'Islamabad',
-      'Istanbul',
-      'Jakarta',
-      'Kiel',
-      'Kyoto',
-      'Le Havre',
-      'Lebanon',
-      'Lhasa',
-      'Lima',
-      'London',
-      'Los Angeles',
-      'Madrid',
-      'Manila',
-      'New York',
-      'Olympia',
-      'Oslo',
-      'Panama City',
-      'Peking',
-      'Philadelphia',
-      'San Francisco',
-      'Seoul',
-      'Taipeh',
-      'Tel Aviv',
-      'Tokio',
-      'Uelzen',
-      'Washington'
-    ];
+
+  itemSelected(post) {
+    this.navCtrl.push(SinglepostPage, { post_data: post });
   }
 
   getItems(q: string) {
-    // Reset items back to all of the items
-    this.initializeItems();
+    //this.loadPost();
 
-    // if the value is an empty string don't filter the items
     if (!q || q.trim() === '') {
-      return;
+      this.loadPost();
     }
 
-    this.items = this.items.filter((v) => v.toLowerCase().indexOf(q.toLowerCase()) > -1);
+    this.post = this.post.filter((v) => v.title.rendered.toLowerCase().indexOf(q.toLowerCase()) > -1);
   }
 
-  openModal() {
-    let modal = this.modalCtrl.create('ModalPage');
-    modal.present();
-  }
 }

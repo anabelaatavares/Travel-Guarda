@@ -21,6 +21,7 @@ export class mapDirectionPostPage {
 
     constructor(public navCtrl: NavController, private navParams: NavParams, public geolocation: Geolocation, public http: Http) {
         this.post = navParams.get('post_data');
+        console.log(this.post);
     }
 
     ionViewDidLoad() {
