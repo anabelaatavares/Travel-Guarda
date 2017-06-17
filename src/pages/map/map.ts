@@ -21,9 +21,11 @@ export class MapPage {
 
     constructor(public navCtrl: NavController, private navParams: NavParams, public geolocation: Geolocation, public http: Http) {
         this.post = navParams.get('post_data');
-        //console.log(this.post);
-        this.initMap();
 
+    }
+      ionViewDidLoad() {
+
+        this.initMap();
     }
 
 
@@ -31,8 +33,8 @@ export class MapPage {
         var options = { timeout: 10000, enableHighAccuracy: true };
         this.geolocation.getCurrentPosition(options).then((position) => {
 
-            //let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            let latLng = new google.maps.LatLng(40.5333333,-7.2666667);
+            let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            //let latLng = new google.maps.LatLng(40.5333333,-7.2666667);
 
             let mapOptions = {
                 center: latLng,
