@@ -58,6 +58,9 @@ export class ListPage {
       buttons: ['OK']
     });
 
+    this.items = [];
+    this.storage.set('myStore', this.items);
+
     alert.present();
   }
 

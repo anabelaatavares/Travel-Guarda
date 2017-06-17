@@ -11,6 +11,7 @@ declare var google;
     templateUrl: 'mapLocationPost.html'
 })
 export class mapLocationPostPage {
+    postss: any;
 
 
     @ViewChild('map') mapElement: ElementRef;
@@ -42,6 +43,7 @@ export class mapLocationPostPage {
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
             this.loadPost();
+           // this.loadPosts();
 
         }, (err) => {
             console.log(err);
@@ -90,5 +92,4 @@ export class mapLocationPostPage {
                 console.log('error', error);
             });
     }
-
 }

@@ -11,12 +11,13 @@ import { SinglepostPage } from "../singlepost/singlepost";
   templateUrl: 'categoryPost.html'
 })
 export class categoryPostPage {
-  api_url: 'http://guardatravel.96.lt/wp-json/wp/v2/posts?categories='
+  //api_url: 'http://guardatravel.96.lt/wp-json/wp/v2/posts?categories='
   categories: any
   posts: any
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.categories = navParams.get('post_data');
+    console.log(this.categories);
 
     this.http.get('http://guardatravel.96.lt/wp-json/wp/v2/posts?categories=' + this.categories.id)
       .map(res => res.json()).subscribe(posts => {

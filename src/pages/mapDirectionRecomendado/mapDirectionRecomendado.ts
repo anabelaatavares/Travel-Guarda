@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http } from "@angular/http";
 import { SinglepostPage } from "../singlepost/singlepost";
+import { SearchPage } from "../searchPage/search-page";
 
 declare var google;
 
@@ -19,6 +20,10 @@ export class mapDirectionRecomendadoPage {
 
     constructor(public navCtrl: NavController, private navParams: NavParams, public geolocation: Geolocation, public http: Http) {
         //this.post = navParams.get('post_data');
+    }
+
+    goToSecond() {
+        this.navCtrl.push(SearchPage);
     }
 
     ionViewDidLoad() {

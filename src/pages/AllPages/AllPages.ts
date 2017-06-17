@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { SinglepostPage } from '../../pages/singlepost/singlepost';
+import { SearchPage } from "../searchPage/search-page";
 
 @Component({
   selector: 'page-AllPages',
@@ -19,6 +20,10 @@ export class AllPages {
 
   itemSelected(post) {
     this.navCtrl.push(SinglepostPage, { post_data: post });
+  }
+
+  goToSecond() {
+    this.navCtrl.push(SearchPage);
   }
 
   loadPost() {

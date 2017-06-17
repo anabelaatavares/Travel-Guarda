@@ -16,16 +16,20 @@ declare var Connection: any;
   templateUrl: 'home.html'
 })
 export class HomePage {
+  catega: any;
+  cats: any;
+  categorias: any;
   api_url = 'http://guardatravel.96.lt/wp-json/wp/v2/';
   posts: any;
   categ: any;
-
+  
   tab1Root = CategoriesPage;
-
+  
   constructor(public navCtrl: NavController, public http: Http, private platform: Platform, private toastCtrl: ToastController) {
     this.loadPost();
     this.loadCats();
-
+    this.loadCatsVerTudo();
+    
     this.platform.ready().then(() => {
       var networkState = navigator.connection.type;
       var states = {};
@@ -33,8 +37,8 @@ export class HomePage {
       states[Connection.CELL_3G] = 'Conexão 3G';
       states[Connection.CELL_4G] = 'Conexão 4G';
       states[Connection.NONE] = 'Não tem ligação à internet';
-
-
+      
+      
       if (states[Connection.NONE]) {
         let toast = this.toastCtrl.create({
           message: states[networkState] + ' efetuada',
@@ -52,42 +56,58 @@ export class HomePage {
       }
     });
   }
-
+  
   goToSecond() {
     this.navCtrl.push(SearchPage);
   }
-
+  
   itemSelected(post) {
     this.navCtrl.push(SinglepostPage, { post_data: post });
   }
-
+  
   itemSelecteded(category) {
     this.navCtrl.push(categoryPostPage, { post_data: category });
   }
-
+  
   itemPage() {
     this.navCtrl.push(CategoriesPage);
   }
-
+  
+  itemPageDeveVer() {
+    this.navCtrl.push(categoryPostPage, { post_data: this.catega });
+  }
+  
+  loadCatsVerTudo() {
+    this.http.get('http://guardatravel.96.lt/wp-json/wp/v2/categories/9')
+    .map(res => res.json()).subscribe(catega => {
+      //console.log(posts);
+      this.catega = catega;
+      console.log(this.catega);
+    }, (error) => {
+      console.log('error', error);
+    });
+  }
+  
   loadCats() {
     this.http.get('http://guardatravel.96.lt/wp-json/wp/v2/categories?per_page=3')
-      .map(res => res.json()).subscribe(categ => {
-        //console.log(posts);
-        this.categ = categ;
-      }, (error) => {
-        console.log('error', error);
-      });
+    .map(res => res.json()).subscribe(categ => {
+      //console.log(posts);
+      this.categ = categ;
+    }, (error) => {
+      console.log('error', error);
+    });
   }
-
+  
   loadPost() {
-    this.http.get('http://guardatravel.96.lt/wp-json/wp/v2/posts?categories=9')
-      .map(res => res.json()).subscribe(posts => {
-        this.posts = posts;
-        console.log(this.posts);
-      }, (error) => {
-        console.log('error', error);
-      });
+    this.http.get('http://guardatravel.96.lt/wp-json/wp/v2/posts?categories=9&per_page=3')
+    .map(res => res.json()).subscribe(posts => {
+      this.posts = posts;
+    }, (error) => {
+      console.log('error', error);
+    });
   }
-
-
+  
+  
+  
+  
 }

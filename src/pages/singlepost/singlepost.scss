@@ -15,7 +15,13 @@ page-singlepost {
     /* Add a pointer cursor on mouse-over */
   }
 
-  .table {
-    padding: 2px;
-    }
+  #table {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }

@@ -36,11 +36,13 @@ export class SearchPage {
   getItems(q: string) {
     //this.loadPost();
 
-    if (!q || q.trim() === '') {
+    if (!q || q.trim() == '') {
       this.loadPost();
+    } else {
+      this.post = this.post.filter((v) => v.title.rendered.toLowerCase().indexOf(q.toLowerCase()) > -1);
     }
 
-    this.post = this.post.filter((v) => v.title.rendered.toLowerCase().indexOf(q.toLowerCase()) > -1);
+
   }
 
 }

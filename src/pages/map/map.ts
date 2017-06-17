@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http } from "@angular/http";
 import { SinglepostPage } from "../singlepost/singlepost";
+import { SearchPage } from "../searchPage/search-page";
 
 declare var google;
 
@@ -23,11 +24,14 @@ export class MapPage {
         this.post = navParams.get('post_data');
 
     }
-      ionViewDidLoad() {
+    ionViewDidLoad() {
 
         this.initMap();
     }
 
+    goToSecond() {
+        this.navCtrl.push(SearchPage);
+    }
 
     initMap() {
         var options = { timeout: 10000, enableHighAccuracy: true };

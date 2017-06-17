@@ -6,6 +6,7 @@
 
 <ion-content padding>
   <div *ngIf="post" class="selection">
+    <img src="{{post.better_featured_image?.source_url}}" />
     <p style="text-align: justify;" [innerHTML]="post.content.rendered"></p>
     <br>
     <hr>
@@ -14,10 +15,13 @@
     <p> Horário: {{post.acf.horario}}</p>
     <p> Contato: {{post.acf.contatos}}</p>
     <br>
-    <table>
+    <table id="table">
       <tr>
-        <td class="table"> <button style="background-color: #38a49d;" class="btn" (click)="itemSelected(post)">Ver Localização no Mapa</button></td>
-        <td class="table"> <button style="background-color: #888888;" class="btn" (click)="save(post)">Adicionar à Lista para Visitar</button></td>
+        <td padding>
+          <button style="background-color: #38a49d;" class="btn" (click)="itemSelected(post)"> <ion-icon ios="ios-navigate" md="ios-navigate-outline"></ion-icon></button>
+        </td>
+        <td>
+          <button style="background-color: #888888;" class="btn" (click)="save(post)"><ion-icon name="star"></ion-icon></button></td>
       </tr>
     </table>
   </div>

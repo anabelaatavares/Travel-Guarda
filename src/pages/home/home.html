@@ -8,7 +8,7 @@
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Ver tudo</ion-title>
+    <ion-title>GuardaTravel</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
@@ -28,15 +28,31 @@
   </div>-->
   <p style="margin: 10px;"><b>O que deve visitar</b></p>
   <div id="carousel">
-    <div class="slide" *ngFor="let post of posts" (click)="itemSelected(post)">
+    <div class="slide">
+      <div class="card-background-page">
+        <ion-card *ngFor="let post of posts" (click)="itemSelected(post)">
+          <img src="{{post.better_featured_image.media_details.sizes.thumbnail?.source_url}}" />
+          <div style="color:#fff;" class="card-title">{{post.title.rendered}}</div>
+        </ion-card>
+        <!--<div class="slide" *ngFor="let post of posts" (click)="itemSelected(post)">
+          <img src="{{post.better_featured_image.media_details.sizes.thumbnail?.source_url}}" />
+          <div style="width: 140px; white-space: normal; text-align: center;">{{post.title.rendered}}</div>
+        </div>-->
+        <ion-card (click)="itemPageDeveVer()">
+          <img src="http://www.ipg.pt/website/imgs/gallery/ipg01.jpg" />
+          <div class="card-title">Ver Mais</div>
+        </ion-card>
+      </div>
+    </div>
+    <!--<div class="slide" *ngFor="let post of posts" (click)="itemSelected(post)">
       <img src="{{post.better_featured_image.media_details.sizes.thumbnail?.source_url}}" />
       <div style="width: 140px; white-space: normal; text-align: center;">{{post.title.rendered}}</div>
-    </div>
+    </div>-->
   </div>
   <br>
   <p style="margin: 10px;"><b>Outros Locais por categoria</b></p>
   <div id="carousel">
-    <div class="slide" z>
+    <div class="slide">
       <div class="card-background-page">
         <ion-card *ngFor="let category of categ" (click)="itemSelecteded(category)">
           <img src="{{category.img}}" />
